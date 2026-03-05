@@ -1,7 +1,8 @@
 # Automation Shell Scripts for Daily Use
 
-A collection of simple automation scripts written in **Bash** to solve common day-to-day tasks in Linux systems.
-The goal of this repository is to practice **shell scripting, system automation, and DevOps fundamentals** by building small useful tools.
+A collection of practical automation scripts written in **Bash** to simplify common tasks in Linux environments.
+
+The goal of this repository is to practice **shell scripting, system automation, and DevOps fundamentals** by building small but useful utilities that help manage and monitor Linux systems.
 
 These scripts are designed primarily for **Debian-based systems** such as Ubuntu.
 
@@ -9,15 +10,15 @@ These scripts are designed primarily for **Debian-based systems** such as Ubuntu
 
 ## 📌 Project Purpose
 
-Automation is one of the core principles of DevOps and system administration.
-Instead of repeating the same commands manually, these scripts automate common tasks such as:
+Automation is one of the core principles of DevOps and system administration. Instead of manually repeating commands, these scripts automate routine tasks such as:
 
 * Checking installed packages
 * Installing missing packages
-* Listing system packages
-* Managing system utilities
+* Monitoring system health
+* Checking service status
+* Monitoring disk usage
 
-This repository will grow gradually by adding **new automation scripts regularly** and improving existing ones.
+This repository will grow over time as new automation ideas are implemented and existing scripts are improved.
 
 ---
 
@@ -27,6 +28,7 @@ This repository will grow gradually by adding **new automation scripts regularly
 * **Linux (Debian-based distributions)**
 * **APT Package Manager**
 * **DPKG Package System**
+* **System utilities (df, ps, uptime, systemctl)**
 
 ---
 
@@ -36,17 +38,25 @@ This repository will grow gradually by adding **new automation scripts regularly
 automation-shell-scripts/
 │
 ├── scripts/
-│   └── package_helper.sh
+│   ├── package_helper.sh
+│   ├── system_health.sh
+│   ├── service_checker.sh
+│   └── disk_monitor.sh
+│
 └── README.md
 ```
 
-More scripts will be added as the project evolves.
+Each script focuses on automating a specific system task.
 
 ---
 
-## ⚙️ Script Features
+## ⚙️ Available Scripts
 
-The current script provides the following functionality:
+### 📦 Package Helper
+
+`package_helper.sh`
+
+Features:
 
 * List installed packages using **dpkg**
 * List packages installed via **apt**
@@ -55,7 +65,51 @@ The current script provides the following functionality:
 * Install packages only if they are missing
 * Interactive command-line menu
 
-This ensures the script avoids reinstalling packages unnecessarily.
+---
+
+### 🖥 System Health Monitor
+
+`system_health.sh`
+
+Displays basic system health information including:
+
+* Hostname
+* System uptime
+* CPU load average
+* Memory usage
+* Disk usage
+* Top memory-consuming processes
+* Logged-in users
+
+---
+
+### 🔧 Service Status Checker
+
+`service_checker.sh`
+
+Allows you to check the status of multiple services at once using **systemctl**.
+
+Example:
+
+```
+Enter service names: nginx docker ssh
+```
+
+Output shows whether each service is **running or not running**.
+
+---
+
+### 💾 Disk Usage Monitor
+
+`disk_monitor.sh`
+
+Monitors disk usage across mounted partitions and displays warnings when disk usage exceeds a predefined threshold.
+
+Example output:
+
+```
+WARNING: /dev/sda1 mounted on / is 85% full
+```
 
 ---
 
@@ -73,33 +127,25 @@ git clone https://github.com/your-username/automation-shell-scripts.git
 cd automation-shell-scripts
 ```
 
-### 3. Give execution permission
+### 3. Give execution permission to scripts
 
 ```
-chmod +x package_helper.sh
+chmod +x scripts/*.sh
 ```
 
-### 4. Run the script
+### 4. Run a script
+
+Example:
 
 ```
-./package_helper.sh
+./scripts/package_helper.sh
 ```
 
----
-
-## 📖 Example Usage
-
-The script will show an interactive menu:
+or
 
 ```
-1) List all installed packages
-2) List packages installed via apt
-3) List snap packages
-4) Install packages
-5) Exit
+./scripts/system_health.sh
 ```
-
-Choose the desired option and follow the prompts.
 
 ---
 
@@ -107,6 +153,7 @@ Choose the desired option and follow the prompts.
 
 * Linux system (Debian / Ubuntu recommended)
 * `sudo` privileges for installing packages
+* `systemctl` for service checks
 
 ---
 
@@ -114,18 +161,17 @@ Choose the desired option and follow the prompts.
 
 Planned improvements include:
 
-* Logging installation results
+* Logging script outputs
+* Automatic alerts for high system load
 * Support for multiple Linux distributions
-* Automatic dependency checks
-* System monitoring scripts
-* Log analysis automation
+* Log monitoring and analysis scripts
+* Network and port monitoring utilities
 
 ---
 
 ## 🤝 Contributing
 
-Suggestions and improvements are always welcome.
-Feel free to open an issue or submit a pull request.
+Suggestions and improvements are welcome. Feel free to open an issue or submit a pull request.
 
 ---
 
